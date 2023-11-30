@@ -40,7 +40,7 @@ import { noop } from '../util/noop.js';
  * @return A function that returns an Observable of buffers, which are arrays
  * of values.
  */
-export function buffer<T>(closingNotifier: ObservableInput<any>): OperatorFunction<T, T[]> {
+export function buffer<T>(closingNotifier: ObservableInput<unknown>): OperatorFunction<T, T[]> {
   return (source) =>
     new Observable((destination) => {
       // The current buffered values.

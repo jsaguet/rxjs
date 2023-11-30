@@ -48,7 +48,7 @@ import { arrRemove } from '../util/arrRemove.js';
  */
 export function bufferToggle<T, O>(
   openings: ObservableInput<O>,
-  closingSelector: (value: O) => ObservableInput<any>
+  closingSelector: (value: O) => ObservableInput<unknown>
 ): OperatorFunction<T, T[]> {
   return (source) =>
     new Observable((destination) => {

@@ -41,7 +41,7 @@ import { noop } from '../util/noop.js';
  * Observable that signals buffer closure.
  * @return A function that returns an Observable of arrays of buffered values.
  */
-export function bufferWhen<T>(closingSelector: () => ObservableInput<any>): OperatorFunction<T, T[]> {
+export function bufferWhen<T>(closingSelector: () => ObservableInput<unknown>): OperatorFunction<T, T[]> {
   return (source) =>
     new Observable((subscriber) => {
       // The buffer we keep and emit.
@@ -49,7 +49,7 @@ export function bufferWhen<T>(closingSelector: () => ObservableInput<any>): Oper
       // A reference to the subscriber used to subscribe to
       // the closing notifier. We need to hold this so we can
       // end the subscription after the first notification.
-      let closingSubscriber: Subscriber<T> | null = null;
+      let closingSubscriber: Subscriber<unknown> | null = null;
 
       // Ends the previous closing notifier subscription, so it
       // terminates after the first emission, then emits
