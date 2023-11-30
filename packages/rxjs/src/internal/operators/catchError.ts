@@ -3,7 +3,7 @@ import { Observable, operate, from } from '../Observable.js';
 import type { ObservableInput, OperatorFunction, ObservedValueOf } from '../types.js';
 
 export function catchError<T, O extends ObservableInput<unknown>>(
-  selector: (err: unknown, caught: Observable<T>) => O
+  selector: (err: unknown, caught: Observable<unknown>) => O
 ): OperatorFunction<T, T | ObservedValueOf<O>>;
 
 /**
@@ -98,8 +98,8 @@ export function catchError<T, O extends ObservableInput<unknown>>(
  * @return A function that returns an Observable that originates from either
  * the source or the Observable returned by the `selector` function.
  */
-export function catchError<T, O extends ObservableInput<any>>(
-  selector: (err: unknown, caught: Observable<T>) => O
+export function catchError<T, O extends ObservableInput<unknown>>(
+  selector: (err: unknown, caught: Observable<unknown>) => O
 ): OperatorFunction<T, T | ObservedValueOf<O>> {
   return (source) =>
     new Observable((destination) => {
