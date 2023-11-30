@@ -67,7 +67,7 @@ export function debounce<T>(durationSelector: (value: T) => ObservableInput<unkn
       let hasValue = false;
       let lastValue: T | null = null;
       // The subscriber/subscription for the current debounce, if there is one.
-      let durationSubscriber: Subscriber<any> | null = null;
+      let durationSubscriber: Subscriber<unknown> | null = null;
 
       const emit = () => {
         // Unsubscribe any current debounce subscription we have,
