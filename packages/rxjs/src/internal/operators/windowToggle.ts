@@ -51,13 +51,13 @@ import { arrRemove } from '../util/arrRemove.js';
  */
 export function windowToggle<T, O>(
   openings: ObservableInput<O>,
-  closingSelector: (openValue: O) => ObservableInput<any>
+  closingSelector: (openValue: O) => ObservableInput<unknown>
 ): OperatorFunction<T, Observable<T>> {
   return (source) =>
     new Observable((destination) => {
       const windows: Subject<T>[] = [];
 
-      const handleError = (err: any) => {
+      const handleError = (err: unknown) => {
         while (0 < windows.length) {
           windows.shift()!.error(err);
         }
@@ -77,7 +77,7 @@ export function windowToggle<T, O>(
               closingSubscription.unsubscribe();
             };
 
-            let closingNotifier: Observable<any>;
+            let closingNotifier: Observable<unknown>;
             try {
               closingNotifier = from(closingSelector(openValue));
             } catch (err) {

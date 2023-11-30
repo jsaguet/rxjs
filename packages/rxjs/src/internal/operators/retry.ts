@@ -21,7 +21,7 @@ export interface RetryConfig {
    * completes _without_ emitting, the resulting observable will complete without error,
    * if the notifier errors, the error will be pushed to the result.
    */
-  delay?: number | ((error: any, retryCount: number) => ObservableInput<any>);
+  delay?: number | ((error: unknown, retryCount: number) => ObservableInput<unknown>);
   /**
    * Whether or not to reset the retry counter when the retried subscription
    * emits its first value.

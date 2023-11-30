@@ -55,7 +55,7 @@ import type { UnaryFunction } from '../types.js';
  */
 export function partition<T>(
   predicate: (value: T, index: number) => boolean,
-  thisArg?: any
+  thisArg?: unknown
 ): UnaryFunction<Observable<T>, [Observable<T>, Observable<T>]> {
   return (source: Observable<T>) =>
     [filter(predicate, thisArg)(source), filter(not(predicate, thisArg))(source)] as [Observable<T>, Observable<T>];

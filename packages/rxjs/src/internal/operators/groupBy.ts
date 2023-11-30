@@ -4,13 +4,13 @@ import type { ObservableInput, Observer, OperatorFunction, SubjectLike } from '.
 
 export interface BasicGroupByOptions<K, T> {
   element?: undefined;
-  duration?: (grouped: GroupedObservable<K, T>) => ObservableInput<any>;
+  duration?: (grouped: GroupedObservable<K, T>) => ObservableInput<unknown>;
   connector?: () => SubjectLike<T>;
 }
 
 export interface GroupByOptionsWithElement<K, E, T> {
   element: (value: T) => E;
-  duration?: (grouped: GroupedObservable<K, E>) => ObservableInput<any>;
+  duration?: (grouped: GroupedObservable<K, E>) => ObservableInput<unknown>;
   connector?: () => SubjectLike<E>;
 }
 

@@ -46,6 +46,6 @@ import { identity } from '../util/identity.js';
  * Observables and propagates the first Observable exclusively until it
  * completes before subscribing to the next.
  */
-export function exhaustAll<O extends ObservableInput<any>>(): OperatorFunction<O, ObservedValueOf<O>> {
+export function exhaustAll<O extends ObservableInput<unknown>>(): OperatorFunction<O, ObservedValueOf<O>> {
   return exhaustMap(identity);
 }

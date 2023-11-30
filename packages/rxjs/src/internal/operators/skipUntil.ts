@@ -47,7 +47,7 @@ import { noop } from '../util/noop.js';
  * source Observable until the `notifier` Observable emits an item, then emits the
  * remaining items.
  */
-export function skipUntil<T>(notifier: ObservableInput<any>): MonoTypeOperatorFunction<T> {
+export function skipUntil<T>(notifier: ObservableInput<unknown>): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       let taking = false;

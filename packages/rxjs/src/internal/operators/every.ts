@@ -5,7 +5,7 @@ export function every<T>(predicate: BooleanConstructor): OperatorFunction<T, Exc
 /** @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8. */
 export function every<T>(
   predicate: BooleanConstructor,
-  thisArg: any
+  thisArg: unknown
 ): OperatorFunction<T, Exclude<T, Falsy> extends never ? false : boolean>;
 /** @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8. */
 export function every<T, A>(
@@ -41,7 +41,7 @@ export function every<T>(predicate: (value: T, index: number, source: Observable
  */
 export function every<T>(
   predicate: (value: T, index: number, source: Observable<T>) => boolean,
-  thisArg?: any
+  thisArg?: unknown
 ): OperatorFunction<T, boolean> {
   return (source) =>
     new Observable((destination) => {

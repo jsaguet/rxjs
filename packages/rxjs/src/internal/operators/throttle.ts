@@ -78,7 +78,7 @@ export interface ThrottleConfig {
  * @return A function that returns an Observable that performs the throttle
  * operation to limit the rate of emissions from the source.
  */
-export function throttle<T>(durationSelector: (value: T) => ObservableInput<any>, config?: ThrottleConfig): MonoTypeOperatorFunction<T> {
+export function throttle<T>(durationSelector: (value: T) => ObservableInput<unknown>, config?: ThrottleConfig): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       const { leading = true, trailing = false } = config ?? {};

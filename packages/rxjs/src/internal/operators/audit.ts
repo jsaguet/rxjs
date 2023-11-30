@@ -47,7 +47,7 @@ import type { MonoTypeOperatorFunction, ObservableInput } from '../types.js';
  * @return A function that returns an Observable that performs rate-limiting of
  * emissions from the source Observable.
  */
-export function audit<T>(durationSelector: (value: T) => ObservableInput<any>): MonoTypeOperatorFunction<T> {
+export function audit<T>(durationSelector: (value: T) => ObservableInput<unknown>): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       let hasValue = false;

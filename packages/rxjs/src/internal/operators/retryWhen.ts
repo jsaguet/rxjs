@@ -60,12 +60,12 @@ import type { MonoTypeOperatorFunction, ObservableInput } from '../types.js';
  * Will be removed in v9 or v10. Use {@link retry}'s {@link RetryConfig#delay delay} option instead.
  * Instead of `retryWhen(() => notify$)`, use: `retry({ delay: () => notify$ })`.
  */
-export function retryWhen<T>(notifier: (errors: Observable<any>) => ObservableInput<any>): MonoTypeOperatorFunction<T> {
+export function retryWhen<T>(notifier: (errors: Observable<unknown>) => ObservableInput<unknown>): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       let innerSub: Subscription | null;
       let syncResub = false;
-      let errors$: Subject<any>;
+      let errors$: Subject<unknown>;
 
       const subscribeForRetryWhen = () => {
         innerSub = source.subscribe(

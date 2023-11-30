@@ -19,7 +19,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an `ObservableInput` instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    */
-  resetOnError?: boolean | ((error: any) => ObservableInput<any>);
+  resetOnError?: boolean | ((error: unknown) => ObservableInput<unknown>);
   /**
    * If `true`, the resulting observable will reset internal state on completion from source and return to a "cold" state. This
    * allows the resulting observable to be "repeated" after it is done.

@@ -16,7 +16,7 @@ export interface RepeatConfig {
    * and the return value should be a valid observable input that will notify when the source
    * should be repeated. If the notifier observable is empty, the result will complete.
    */
-  delay?: number | ((count: number) => ObservableInput<any>);
+  delay?: number | ((count: number) => ObservableInput<unknown>);
 }
 
 /**

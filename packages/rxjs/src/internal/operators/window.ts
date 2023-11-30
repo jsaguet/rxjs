@@ -47,14 +47,14 @@ import { noop } from '../util/noop.js';
  * @return A function that returns an Observable of windows, which are
  * Observables emitting values of the source Observable.
  */
-export function window<T>(windowBoundaries: ObservableInput<any>): OperatorFunction<T, Observable<T>> {
+export function window<T>(windowBoundaries: ObservableInput<unknown>): OperatorFunction<T, Observable<T>> {
   return (source) =>
     new Observable((destination) => {
       let windowSubject: Subject<T> = new Subject<T>();
 
       destination.next(windowSubject.asObservable());
 
-      const errorHandler = (err: any) => {
+      const errorHandler = (err: unknown) => {
         windowSubject.error(err);
         destination.error(err);
       };

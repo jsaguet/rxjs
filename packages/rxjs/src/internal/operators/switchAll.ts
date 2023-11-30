@@ -60,6 +60,6 @@ import { identity } from '../util/identity.js';
  * Observable into a first-order Observable producing values only from the most
  * recent Observable sequence.
  */
-export function switchAll<O extends ObservableInput<any>>(): OperatorFunction<O, ObservedValueOf<O>> {
+export function switchAll<O extends ObservableInput<unknown>>(): OperatorFunction<O, ObservedValueOf<O>> {
   return switchMap(identity);
 }

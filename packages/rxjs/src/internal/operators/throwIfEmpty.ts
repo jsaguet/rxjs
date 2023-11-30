@@ -38,7 +38,7 @@ import { Observable, operate } from '../Observable.js';
  * @return A function that returns an Observable that throws an error if the
  * source Observable completed without emitting.
  */
-export function throwIfEmpty<T>(errorFactory: () => any = defaultErrorFactory): MonoTypeOperatorFunction<T> {
+export function throwIfEmpty<T>(errorFactory: () => unknown = defaultErrorFactory): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       let hasValue = false;
