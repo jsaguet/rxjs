@@ -1,4 +1,4 @@
-import type { ObservableInput, OperatorFunction, ObservedValueOf } from '../types.js';
+import type { ObservableInput, OperatorFunction } from '../types.js';
 import { Observable } from '../Observable.js';
 import { mergeInternals } from './mergeInternals.js';
 
@@ -55,9 +55,9 @@ import { mergeInternals } from './mergeInternals.js';
  * applying the projection function to each item emitted by the source Observable
  * and merging the results of the Observables obtained from this transformation.
  */
-export function mergeMap<T, O extends ObservableInput<any>>(
-  project: (value: T, index: number) => O,
+export function mergeMap<T, R>(
+  project: (value: T, index: number) => ObservableInput<R>,
   concurrent: number = Infinity
-): OperatorFunction<T, ObservedValueOf<O>> {
+): OperatorFunction<T, R> {
   return (source) => new Observable((subscriber) => mergeInternals(source, subscriber, project, concurrent));
 }
