@@ -63,7 +63,7 @@ import type { ObservableInput, OperatorFunction, ObservedValueOf } from '../type
  * applying the projection function to each item emitted by the source Observable
  * and taking only the values from the most recently projected inner Observable.
  */
-export function switchMap<T, O extends ObservableInput<any>>(
+export function switchMap<T, O extends ObservableInput<unknown>>(
   project: (value: T, index: number) => O
 ): OperatorFunction<T, ObservedValueOf<O>> {
   return (source) =>

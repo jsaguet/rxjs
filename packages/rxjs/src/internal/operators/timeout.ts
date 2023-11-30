@@ -233,7 +233,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  *   });
  * ```
  */
-export function timeout<T, M = unknown>(config: Omit<TimeoutConfig<T, any, M>, 'with'>): OperatorFunction<T, T>;
+export function timeout<T, M = unknown>(config: Omit<TimeoutConfig<T, ObservableInput<unknown>, M>, 'with'>): OperatorFunction<T, T>;
 
 /**
  * Returns an observable that will error if the source does not push its first value before the specified time passed as a `Date`.
@@ -276,7 +276,7 @@ export function timeout<T>(each: number, scheduler?: SchedulerLike): MonoTypeOpe
  * @return A function that returns an Observable that mirrors behaviour of the
  * source Observable, unless timeout happens when it throws an error.
  */
-export function timeout<T, O extends ObservableInput<any>, M>(
+export function timeout<T, O extends ObservableInput<unknown>, M>(
   config: number | Date | TimeoutConfig<T, O, M>,
   schedulerArg?: SchedulerLike
 ): OperatorFunction<T, T | ObservedValueOf<O>> {
@@ -378,6 +378,6 @@ export function timeout<T, O extends ObservableInput<any>, M>(
  * is not specified.
  * @param info The information about the timeout to pass along to the error
  */
-function timeoutErrorFactory(info: TimeoutInfo<any>): Observable<never> {
+function timeoutErrorFactory(info: TimeoutInfo<unknown>): Observable<never> {
   throw new TimeoutError(info);
 }

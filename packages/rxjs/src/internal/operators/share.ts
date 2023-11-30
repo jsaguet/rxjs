@@ -29,7 +29,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an `ObservableInput` instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    */
-  resetOnComplete?: boolean | (() => ObservableInput<any>);
+  resetOnComplete?: boolean | (() => ObservableInput<unknown>);
   /**
    * If `true`, when the number of subscribers to the resulting observable reaches zero due to those subscribers unsubscribing, the
    * internal state will be reset and the resulting observable will return to a "cold" state. This means that the next
@@ -40,7 +40,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an `ObservableInput` instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    */
-  resetOnRefCountZero?: boolean | (() => ObservableInput<any>);
+  resetOnRefCountZero?: boolean | (() => ObservableInput<unknown>);
 }
 
 export function share<T>(): MonoTypeOperatorFunction<T>;
@@ -233,7 +233,7 @@ export function share<T>(options: ShareConfig<T> = {}): MonoTypeOperatorFunction
 
 function handleReset<T extends unknown[] = never[]>(
   reset: () => void,
-  on: boolean | ((...args: T) => ObservableInput<any>),
+  on: boolean | ((...args: T) => ObservableInput<unknown>),
   ...args: T
 ): Subscription | undefined {
   if (on === true) {

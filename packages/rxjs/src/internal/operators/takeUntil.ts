@@ -40,7 +40,7 @@ import { noop } from '../util/noop.js';
  * @return A function that returns an Observable that emits the values from the
  * source Observable until `notifier` emits its first value.
  */
-export function takeUntil<T>(notifier: ObservableInput<any>): MonoTypeOperatorFunction<T> {
+export function takeUntil<T>(notifier: ObservableInput<unknown>): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       from(notifier).subscribe(operate({ destination, next: () => destination.complete(), complete: noop }));

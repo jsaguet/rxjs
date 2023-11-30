@@ -2,8 +2,6 @@ import { reduce } from './reduce.js';
 import type { OperatorFunction } from '../types.js';
 import { Observable } from '../Observable.js';
 
-const arrReducer = (arr: any[], value: any) => (arr.push(value), arr);
-
 /**
  * Collects all source emissions and emits them as an array when the source completes.
  *
@@ -35,6 +33,7 @@ const arrReducer = (arr: any[], value: any) => (arr.push(value), arr);
  * emitted by the source Observable when source completes.
  */
 export function toArray<T>(): OperatorFunction<T, T[]> {
+  const arrReducer = (arr: T[], value: T) => (arr.push(value), arr);
   // Because arrays are mutable, and we're mutating the array in this
   // reducer process, we have to encapsulate the creation of the initial
   // array within the returned operator function.

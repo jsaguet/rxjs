@@ -100,7 +100,7 @@ export function windowTime<T>(
  * @return A function that returns an Observable of windows, which in turn are
  * Observables.
  */
-export function windowTime<T>(windowTimeSpan: number, ...otherArgs: any[]): OperatorFunction<T, Observable<T>> {
+export function windowTime<T>(windowTimeSpan: number, ...otherArgs: (number | null | void | SchedulerLike)[]): OperatorFunction<T, Observable<T>> {
   const scheduler = popScheduler(otherArgs) ?? asyncScheduler;
   const windowCreationInterval = (otherArgs[0] as number) ?? null;
   const maxWindowSize = (otherArgs[1] as number) || Infinity;

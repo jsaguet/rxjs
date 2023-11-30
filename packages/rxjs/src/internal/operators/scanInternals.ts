@@ -26,7 +26,7 @@ export function scanInternals<V, A, S>(
   // The state that we're tracking, starting with the seed,
   // if there is one, and then updated by the return value
   // from the accumulator on each emission.
-  let state: any = seed;
+  let state: V | A | S = seed;
   // An index to pass to the accumulator function.
   let index = 0;
 

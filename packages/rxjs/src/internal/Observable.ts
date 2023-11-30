@@ -328,7 +328,7 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
    * the Observable has experienced an error condition.
    * @param err The `error` exception.
    */
-  error(err?: any): void {
+  error(err?: unknown): void {
     if (this.isStopped) {
       handleStoppedNotification(errorNotification(err), this);
     } else {
@@ -1343,8 +1343,8 @@ export const COMPLETE_NOTIFICATION = (() => createNotification('C', undefined, u
  * as other notifications.
  * @internal
  */
-export function errorNotification(error: any): ErrorNotification {
-  return createNotification('E', undefined, error) as any;
+export function errorNotification(error: unknown): ErrorNotification {
+  return createNotification('E', undefined, error);
 }
 
 /**
@@ -1357,7 +1357,7 @@ export function nextNotification<T>(value: T) {
 }
 
 export function createNotification<T>(kind: 'N', value: T, error: undefined): { kind: 'N'; value: T; error: undefined };
-export function createNotification<T>(kind: 'E', value: undefined, error: any): { kind: 'E'; value: undefined; error: any };
+export function createNotification<T>(kind: 'E', value: undefined, error: any): { kind: 'E'; value: undefined; error: unknown };
 export function createNotification<T>(kind: 'C', value: undefined, error: undefined): { kind: 'C'; value: undefined; error: undefined };
 export function createNotification<T>(
   kind: 'N' | 'E' | 'C',

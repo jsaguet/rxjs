@@ -42,7 +42,7 @@ import { noop } from '../util/noop.js';
  * sampling the values emitted by the source Observable whenever the notifier
  * Observable emits value or completes.
  */
-export function sample<T>(notifier: ObservableInput<any>): MonoTypeOperatorFunction<T> {
+export function sample<T>(notifier: ObservableInput<unknown>): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       let hasValue = false;

@@ -51,7 +51,7 @@ import { noop } from '../util/noop.js';
  * @return A function that returns an Observable of windows, which in turn are
  * Observables.
  */
-export function windowWhen<T>(closingSelector: () => ObservableInput<any>): OperatorFunction<T, Observable<T>> {
+export function windowWhen<T>(closingSelector: () => ObservableInput<unknown>): OperatorFunction<T, Observable<T>> {
   return (source) =>
     new Observable((destination) => {
       let window: Subject<T> | null;
