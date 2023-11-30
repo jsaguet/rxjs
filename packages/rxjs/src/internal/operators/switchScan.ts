@@ -21,10 +21,10 @@ import { Observable, operate } from '../Observable.js';
  * @param seed The initial accumulation value.
  * @return A function that returns an observable of the accumulated values.
  */
-export function switchScan<T, R, O extends ObservableInput<any>>(
-  accumulator: (acc: R, value: T, index: number) => O,
+export function switchScan<T, R>(
+  accumulator: (acc: R, value: T, index: number) => ObservableInput<R>,
   seed: R
-): OperatorFunction<T, ObservedValueOf<O>> {
+): OperatorFunction<T, R> {
   return (source) =>
     new Observable((destination) => {
       // The state we will keep up to date to pass into our
