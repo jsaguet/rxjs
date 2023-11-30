@@ -55,13 +55,13 @@ export function windowWhen<T>(closingSelector: () => ObservableInput<unknown>): 
   return (source) =>
     new Observable((destination) => {
       let window: Subject<T> | null;
-      let closingSubscriber: Subscriber<any> | undefined;
+      let closingSubscriber: Subscriber<unknown> | undefined;
 
       /**
        * When we get an error, we have to notify both the
        * destination subscriber and the window.
        */
-      const handleError = (err: any) => {
+      const handleError = (err: unknown) => {
         window!.error(err);
         destination.error(err);
       };
@@ -85,7 +85,7 @@ export function windowWhen<T>(closingSelector: () => ObservableInput<unknown>): 
         destination.next(window.asObservable());
 
         // Get our closing notifier.
-        let closingNotifier: Observable<any>;
+        let closingNotifier: Observable<unknown>;
         try {
           closingNotifier = from(closingSelector());
         } catch (err) {
