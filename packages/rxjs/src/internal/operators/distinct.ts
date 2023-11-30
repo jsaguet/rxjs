@@ -59,7 +59,7 @@ import { noop } from '../util/noop.js';
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values.
  */
-export function distinct<T, K>(keySelector?: (value: T) => K, flushes?: ObservableInput<any>): MonoTypeOperatorFunction<T> {
+export function distinct<T, K>(keySelector?: (value: T) => K, flushes?: ObservableInput<unknown>): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       const distinctKeys = new Set();

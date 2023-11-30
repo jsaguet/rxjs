@@ -45,13 +45,13 @@ import type { ObservableInput, OperatorFunction, ObservedValueOf } from '../type
  * Observables of each item of the source, ignoring projected Observables that
  * start before their preceding Observable has completed.
  */
-export function exhaustMap<T, O extends ObservableInput<any>>(
+export function exhaustMap<T, O extends ObservableInput<unknown>>(
   project: (value: T, index: number) => O
 ): OperatorFunction<T, ObservedValueOf<O>> {
   return (source) =>
     new Observable((destination) => {
       let index = 0;
-      let innerSub: Subscriber<T> | null = null;
+      let innerSub: Subscriber<ObservedValueOf<O>> | null = null;
       let isComplete = false;
       source.subscribe(
         operate({

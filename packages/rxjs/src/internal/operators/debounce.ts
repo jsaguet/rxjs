@@ -61,7 +61,7 @@ import { noop } from '../util/noop.js';
  * the source Observable by the specified duration Observable returned by
  * `durationSelector`, and may drop some values if they occur too frequently.
  */
-export function debounce<T>(durationSelector: (value: T) => ObservableInput<any>): MonoTypeOperatorFunction<T> {
+export function debounce<T>(durationSelector: (value: T) => ObservableInput<unknown>): MonoTypeOperatorFunction<T> {
   return (source) =>
     new Observable((destination) => {
       let hasValue = false;

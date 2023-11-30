@@ -52,7 +52,7 @@ export function audit<T>(durationSelector: (value: T) => ObservableInput<unknown
     new Observable((destination) => {
       let hasValue = false;
       let lastValue: T | null = null;
-      let durationSubscriber: Subscriber<any> | null = null;
+      let durationSubscriber: Subscriber<unknown> | null = null;
       let isComplete = false;
 
       const endDuration = () => {

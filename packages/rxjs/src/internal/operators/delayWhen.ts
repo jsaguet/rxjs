@@ -9,10 +9,10 @@ import { mergeMap } from './mergeMap.js';
 
 /** @deprecated The `subscriptionDelay` parameter will be removed in v8. */
 export function delayWhen<T>(
-  delayDurationSelector: (value: T, index: number) => ObservableInput<any>,
-  subscriptionDelay: Observable<any>
+  delayDurationSelector: (value: T, index: number) => ObservableInput<unknown>,
+  subscriptionDelay: Observable<unknown>
 ): MonoTypeOperatorFunction<T>;
-export function delayWhen<T>(delayDurationSelector: (value: T, index: number) => ObservableInput<any>): MonoTypeOperatorFunction<T>;
+export function delayWhen<T>(delayDurationSelector: (value: T, index: number) => ObservableInput<unknown>): MonoTypeOperatorFunction<T>;
 
 /**
  * Delays the emission of items from the source Observable by a given time span
@@ -90,8 +90,8 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  * returned by `delayDurationSelector`.
  */
 export function delayWhen<T>(
-  delayDurationSelector: (value: T, index: number) => ObservableInput<any>,
-  subscriptionDelay?: Observable<any>
+  delayDurationSelector: (value: T, index: number) => ObservableInput<unknown>,
+  subscriptionDelay?: Observable<unknown>
 ): MonoTypeOperatorFunction<T> {
   if (subscriptionDelay) {
     // DEPRECATED PATH

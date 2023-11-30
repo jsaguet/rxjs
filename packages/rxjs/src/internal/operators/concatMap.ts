@@ -57,7 +57,7 @@ import type { ObservableInput, OperatorFunction, ObservedValueOf } from '../type
  * applying the projection function to each item emitted by the source Observable
  * and taking values from each projected inner Observable sequentially.
  */
-export function concatMap<T, O extends ObservableInput<any>>(
+export function concatMap<T, O extends ObservableInput<unknown>>(
   project: (value: T, index: number) => O
 ): OperatorFunction<T, ObservedValueOf<O>> {
   return mergeMap(project, 1);
